@@ -16,6 +16,7 @@ app.get('/api', function (req, res, next) {
         res.send();
     } else {
         var targetURL = req.header('Target-URL'); // Target-URL ie. https://example.com or http://example.com
+        console.log(targetURL);
         if (!targetURL) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
