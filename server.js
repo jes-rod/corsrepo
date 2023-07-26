@@ -2,7 +2,11 @@ let express = require('express'),
     request = require('request'),
     app = express();
 
-app.all('*', function (req, res, next) {
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳');
+});
+
+app.get('/api', function (req, res, next) {
 
     // Set CORS headers: allow all origins, methods, and headers: you may want to lock this down in a production environment
     res.header("Access-Control-Allow-Origin", "*");
