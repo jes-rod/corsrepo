@@ -24,7 +24,6 @@ app.get('/api', async function (req, res, next) {
             return;
         }
         const response = await axios.get(targetURL, {headers: {'Authorization': req.header('Authorization')}});
-        console.log(response.data);
         res.json(response.data);
     }
 });
