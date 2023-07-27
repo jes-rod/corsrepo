@@ -1,4 +1,3 @@
-const got = import('got');
 
 let express = require('express'),
     cors = require('cors');
@@ -13,6 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', async function (req, res, next) {
+
+    const got = await import('got');
 
     if (req.method === 'OPTIONS') {
         // CORS Preflight
