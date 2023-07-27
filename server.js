@@ -1,15 +1,18 @@
+const got = import('got');
+
 let express = require('express'),
-    request = require('request'),
     cors = require('cors');
     app = express();
+
+
 
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳');
+  res.send('CORS app running');
 });
 
-app.get('/api', function (req, res, next) {
+app.get('/api', async function (req, res, next) {
 
     if (req.method === 'OPTIONS') {
         // CORS Preflight
@@ -20,13 +23,8 @@ app.get('/api', function (req, res, next) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
         }
-        request({ url: targetURL, method: req.method, headers: {'Authorization': req.header('Authorization')} },
-            function (error, response, body) {
-                if (error) {
-                    console.error('error: ' + response.statusCode)
-                }
-//                console.log(body);
-            }).pipe(res);
+        const response = got(targetURL, {headers: {'Authorization': req.header('Authorization')}}).json();
+        res.json(response);
     }
 });
 
