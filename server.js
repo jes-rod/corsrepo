@@ -24,7 +24,7 @@ app.get('/api', async function (req, res, next) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
         }
-        const response = got(targetURL, {headers: {'Authorization': req.header('Authorization')}}).json();
+        const response = await got(targetURL, {headers: {'Authorization': req.header('Authorization')}}).json();
         res.json(response);
     }
 });
