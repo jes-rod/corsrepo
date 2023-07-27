@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
   res.send('CORS app running');
 });
 
-app.get('/api', async function (req, res, next) {
+app.get('/api', cors(), async function (req, res, next) {
 
     const got = await import('got');
 
