@@ -5,7 +5,6 @@ const express = require('express'),
       axios = require('axios');
       
 
-
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -13,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', async function (req, res, next) {
+
 
     const got = await import('got');
 
