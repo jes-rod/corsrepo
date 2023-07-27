@@ -1,9 +1,7 @@
 
 let express = require('express'),
-    cors = require('cors');
+    cors = require('cors'),
     app = express();
-
-
 
 app.use(cors());
 
